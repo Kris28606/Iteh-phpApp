@@ -1,0 +1,206 @@
+* {
+    font-family: Montserrat;
+}
+
+
+
+.jumbotron {
+    float: center;
+    color: #000;
+    text-align: center;
+    border: 3px white; 
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 17px;
+    background-image: linear-gradient(to right,rgba(255, 151, 53, 0.931) ,rgba(255, 82, 105, 0.931));
+    border-style:solid;
+    border-width: 0px;
+    border-radius: 15px;
+
+}
+/* rgba(0,128,128,1) rgb(255, 116, 162) */
+/* roze pozadina naslova: linear-gradient(to right, rgb(255, 116, 162),rgb(255, 82, 105) ) */
+h1 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+body{
+    background-image: url("../img/backgroundBooks.jpg");
+    background-color: rgb(255, 151, 53);
+   
+}
+
+.form-group {
+    width: 350px;
+    font-size: large;
+}
+
+/* .form-group{
+    background: #000; 
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 90%;
+    border: 5px solid orange; 
+}  */
+.form-group .form-control{
+    border-radius:1rem;
+}
+
+
+.sir-image{
+    text-align: center;
+}
+
+
+.sir-image img{
+    border-radius: 6rem;
+    width: 11%;
+    margin-top: -3%;
+    transform: rotate(29deg);
+}
+
+
+.prijava-form form{
+    padding: 3%;
+} 
+
+
+.prijava-form form .row{
+    margin-bottom: -7%;
+}
+
+
+ .prijava-form h3{
+    margin-bottom: 8%;
+    margin-top: -5%;
+    text-align: center;
+   
+} 
+
+
+.prijava-form {
+    width: 80%;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5%;
+    
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.modal-content{
+    background-image: url("../img/Wallpaper-for-Orange-Aesthetic.jpg");
+    background-size: 100% 100%; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+} 
+
+label {
+    font-size: large;
+}
+
+.row{
+    height: 65px;
+    border-style:solid;
+    border-width: 0px;
+    border-radius: 10px;
+    
+}  
+
+.col-md-4{
+    margin-top: 12px;
+    margin-left: 205px;
+} 
+
+.col-md-8 {
+    width: 500px;
+}
+
+#pregled{
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: rgba(255, 151, 53, 0.253);
+    color: black;
+    border-width: 0;
+}
+
+.thead{
+    font-size: 20px;
+    text-align: center;
+    
+}
+
+th {
+    text-align: center;
+}
+
+.thead {
+    background-image: linear-gradient(to right,rgb(255, 151, 53) ,rgb(255, 82, 105));
+}
+
+
+.tbody tr:hover {
+    background-image: linear-gradient(to right,rgba(255, 151, 53, 0.952) ,rgba(255, 82, 105, 0.952) );
+}
+
+.btn-warning{
+    font-size: 18px;
+    border-radius: 28px;
+    background-color: rgb(255, 142, 37);
+    /* background-image: linear-gradient(to right,rgba(255, 151, 53, 0.931) ,rgba(255, 82, 105, 0.931)); */
+    border-width: 2px;
+    border-color: white;
+}
+
+.btn-danger {
+    font-size: 18px;
+    border-radius: 28px; 
+    /* background-image: linear-gradient(to right, #ff704d,#ff5c33); */
+    background-color: rgb(255, 47, 75);
+    border-width: 2px;
+    border-color: white;   
+}
+
+#btn-pretraga, #btn-prikaz {
+    width: 100%;
+    height: 40px;
+    font-size: large;
+}
+
+#btn-sortiraj{
+    font-size: 20px;
+    border-radius: 28px; 
+    background-color: rgb(255, 47, 75);
+    border-color: white;  
+    border-width: 2px;
+    color: white; 
+}
+
+.btn-danger:hover{
+    background-color: rgb(255, 14, 46);;
+}
+
+.btn-warning:hover {
+    background-color: rgb(255, 127, 8)
+}
+
+#btn-sortiraj:hover {
+    background-image: linear-gradient(to right,rgba(255, 151, 53, 0.89) ,rgba(255, 55, 81, 0.89) );
+}
+
+
+:placeholder-shown{
+    width: 300px;
+    height: 30px;
+}
+
+#myTable {
+    background-image: linear-gradient(to right,rgba(255, 151, 53, 0.89) ,rgba(255, 82, 105, 0.89) );
+    border-style:solid;
+    border-color: white;
+    border-width: 2px;
+}
+
