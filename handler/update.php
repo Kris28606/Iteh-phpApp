@@ -2,7 +2,7 @@
     require "../dbBroker.php";
     require "../model/predmet.php";
     require "../model/user.php";
-    
+
     if(isset($_POST['action']) && $_POST['action'] == 'update_ocena') {
 
        
@@ -25,6 +25,7 @@
             WHERE id = '$id'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
+        
         
     }
 ?>

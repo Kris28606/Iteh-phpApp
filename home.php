@@ -358,7 +358,7 @@ if ($podaci->num_rows == 0) {
                         }
                     }
                 }
-
+ 
                 function funkcijaZaPretragu() {
                     var input, filter, table, tr, td, i, txtValue;
                     input = document.getElementById("myInput");
