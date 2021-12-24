@@ -12,7 +12,7 @@ $('#dodajForm').submit(function(){
     console.log(serijalizacija);
     //na sve inpute, ne dozvoljavamo dalji unos
     $input.prop('disabled', true);
-
+ 
     //krece ajax
     //neki request
     //prihvata JSON kao obj, koji je niz, prvo imamo url, 
@@ -48,7 +48,7 @@ $('#dodajForm').submit(function(){
                 text: 'Ocena nije dodata.',
               })
         }
-        console.log(res);
+        
     });
 
     req.fail(function(jqXHR, textStatus, errorThrown){

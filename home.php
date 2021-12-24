@@ -79,7 +79,7 @@ if ($podaci->num_rows == 0) {
                         $profesor=User::getById($red["profesorId"],$conn)->fetch_array();
                 ?>
                         <tr>
-                            <td data-id="id" data-target="id"><?php echo $predmet["naziv"] ?></td>
+                            <td data-id="id" data-target="predmet"><?php echo $predmet["naziv"] ?></td>
                             <td data-target="ucenik"><?php echo $red["ucenik"] ?></td>
                             <td data-target="ocena"><?php echo $red["ocena"] ?></td>
                             <td data-target="profesor"><?php echo $profesor["imePrezime"] ?></td>
@@ -106,7 +106,7 @@ if ($podaci->num_rows == 0) {
 
 
     //----------------------MODAL DODAJ--------------------------
-    <div class="modal fade" id="myModal" role="dialog">
+    <div  id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- zakazi modal -->
             <!--Sadrzaj modala-->
@@ -116,7 +116,7 @@ if ($podaci->num_rows == 0) {
                 </div>
                 <div class="modal-body">
                     <div class="container prijava-form">
-                        <form action="#" method="post" id="dodajForm">
+                        <form action="#" method="post" id="izmeniForm">
                             <h2 style="color: black; text-align: center; width: 400px;">Unesi ocenu</h2>
                             <div class="row">
                                 <div class="col-md-8">
@@ -163,6 +163,7 @@ if ($podaci->num_rows == 0) {
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label for=""></label>
+                                            <input type="hidden" id="izmenaId" />
                                             <button id="btnDodaj" type="submit" class="btn btn-success btn-block" style="background-color: orange; border: 1px solid black; font-size: large;">Zakazi</button>
                                         </div>
                                     </div>
@@ -174,9 +175,79 @@ if ($podaci->num_rows == 0) {
             </div>
 
         </div>
+    </div>
 
     //----------------------MODAL IZMENI---------------------
     
+    <div  id="izmeniModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- zakazi modal -->
+            <!--Sadrzaj modala-->
+            <div class="modal-content" style="width: 565px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="container prijava-form">
+                        <form action="#" id="form_izmena" method="post" >
+                            <h2 style="color: black; text-align: center; width: 400px;">Izmena ocene</h2>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="">Predmet</label>
+                                            <select id="Predmet" name="predmet" style="border: 1px solid black" class="form-control">
+                                                <?php
+                                                    $predmeti=Predmet::getAll($conn);
+                                                    while($pred=$predmeti->fetch_array()) {
+                                                ?>
+                                                    <option><?php echo $pred["naziv"]; ?></option>
+                                                <?php
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="">Ucenik</label>
+                                            <input type="text" id="Ucenik" style="border: 1px solid black" name="ucenik" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="">Ocena</label>
+                                            <input type="number" id="Ocena" min="1" max="5" style="border: 1px solid black;" name="ocena" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="">Profesor</label>
+
+                                            <input type="text" id="Profesor" value="<?php echo $prof["imePrezime"]; ?>" style="border: 1px solid black;" name="profesor" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="">Datum</label>
+                                            <input type="date" id="Datum" style="border: 1px solid black;" name="datum" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for=""></label>
+                                            <button id="btnIzmeni" name="action" type="submit" class="btn btn-success btn-block" style="background-color: orange; border: 1px solid black; font-size: large;">Izmeni</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -186,84 +257,126 @@ if ($podaci->num_rows == 0) {
     <script src="js/main.js"></script>
 
     <script type="text/javascript">
-    
-   $(".deleteBtn").click( function (e) {
-    e.preventDefault();
-          var element = e.target;
-          del_id = +e.target.id;
-        Swal.fire({
-            title: 'Da li ste sigurni?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: 'rgb(255, 142, 37)',
-            cancelButtonColor: 'rgb(255, 47, 75)',
-            confirmButtonText: 'Obriši',
-            cancelButtonText: 'Otkaži'
-        }).then((result) => {
-            if (result.isConfirmed) {
-              $.ajax({
-                url: 'handler/delete.php',
-                method: 'post',
-                data: {
-                  'id': del_id
-                },
-                success: function(response) {
-                  Swal.fire( {
 
-                    title: 'Obrisana!',
-                    text: 'Ocena je uspešno obrisana.',
-                    confirmButtonColor: 'rgb(255, 142, 37)',
-                    icon: 'success',
-                  })
-                  element.closest('tr').remove();
-                }
-              });
-            }
+        $("#btnIzmeni").click(function() {
+            event.preventDefault();
+            var Id = +$('#izmenaId').val();
+            $.ajax({
+                url: 'handler/update.php',
+                type:'post',
+                data: $("#form_izmena").serialize()+'&action=update_ocena&id=' + Id});
+                Swal.fire( {
+                            title: 'Izmenjena!',
+                            text: 'Ocena je uspešno izmenjena.',
+                            confirmButtonColor: 'rgb(255, 142, 37)',
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload(true);
+                    }
+                })
+        });
+                                  
+
+
+        $("body").on("click",".editBtn", function(e) {
+            
+            var Id=+this.id;
+            var predmet = $(this).closest('tr').children('td[data-target=predmet]').text();
+            var ucenik = $(this).closest('tr').children('td[data-target=ucenik]').text();
+            var ocena = $(this).closest('tr').children('td[data-target=ocena]').text();
+            var profesor = $(this).closest('tr').children('td[data-target=profesor]').text();
+            var datum = $(this).closest('tr').children('td[data-target=datum]').text();
+            
+            $('#Predmet').val(predmet);
+            $('#Ucenik').val(ucenik);
+            $('#Ocena').val(ocena);
+            $('#Profesor').val(profesor);
+            $('#Datum').val(datum);
+            $('#izmenaId').val(Id);
+
         })
-    });
+                                             
+        
     
-    function sortTable() {
-            var table, rows, switching, i, x, y, shouldSwitch;
-            table = document.getElementById("myTable");
-            switching = true;
+        $(".deleteBtn").click( function (e) {
+            e.preventDefault();
+                var element = e.target;
+                del_id = +e.target.id;
+                Swal.fire({
+                    title: 'Da li ste sigurni?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: 'rgb(255, 142, 37)',
+                    cancelButtonColor: 'rgb(255, 47, 75)',
+                    confirmButtonText: 'Obriši',
+                    cancelButtonText: 'Otkaži'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                    $.ajax({
+                        url: 'handler/delete.php',
+                        method: 'post',
+                        data: {
+                        'id': del_id
+                        },
+                        success: function(response) {
+                        Swal.fire( {
 
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[1];
-                    y = rows[i + 1].getElementsByTagName("TD")[1];
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
+                            title: 'Obrisana!',
+                            text: 'Ocena je uspešno obrisana.',
+                            confirmButtonColor: 'rgb(255, 142, 37)',
+                            icon: 'success',
+                        })
+                        element.closest('tr').remove();
+                        }
+                    });
                     }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                })
+            });
+    
+            function sortTable() {
+                    var table, rows, switching, i, x, y, shouldSwitch;
+                    table = document.getElementById("myTable");
                     switching = true;
-                }
-            }
-        }
 
-        function funkcijaZaPretragu() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
+                    while (switching) {
+                        switching = false;
+                        rows = table.rows;
+                        for (i = 1; i < (rows.length - 1); i++) {
+                            shouldSwitch = false;
+                            x = rows[i].getElementsByTagName("TD")[1];
+                            y = rows[i + 1].getElementsByTagName("TD")[1];
+                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                        if (shouldSwitch) {
+                            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                            switching = true;
+                        }
                     }
                 }
-            }
-        }
+
+                function funkcijaZaPretragu() {
+                    var input, filter, table, tr, td, i, txtValue;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    table = document.getElementById("myTable");
+                    tr = table.getElementsByTagName("tr");
+                    for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[0];
+                        if (td) {
+                            txtValue = td.textContent || td.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
     
     </script>
 </body>
