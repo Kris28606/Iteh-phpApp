@@ -26,6 +26,5 @@
         $stmt = $conn->prepare($query);
         $stmt->execute();
         
-        
     }
 ?>

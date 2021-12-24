@@ -13,6 +13,7 @@ $('#dodajForm').submit(function(){
     //na sve inpute, ne dozvoljavamo dalji unos
     $input.prop('disabled', true);
   
+    
     //krece ajax
     //neki request
     //prihvata JSON kao obj, koji je niz, prvo imamo url, 
