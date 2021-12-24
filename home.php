@@ -334,8 +334,7 @@ if ($podaci->num_rows == 0) {
                     }
                 })
             });
-    
-            
+
             function sortTable() {
                     var table, rows, switching, i, x, y, shouldSwitch;
                     table = document.getElementById("myTable");

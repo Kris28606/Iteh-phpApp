@@ -25,6 +25,5 @@
             WHERE id = '$id'";
         $stmt = $conn->prepare($query);
         $stmt->execute();
-        
     }
 ?>
