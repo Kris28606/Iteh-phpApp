@@ -8,14 +8,15 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $uname = $_POST['username'];
     $upass = $_POST['password'];
 
-    // $conn = new mysqli() /// pregazena konekcija iz dbBrokera;
-    $korisnik = new User(1, $uname, $upass);
-    // $odg = $korisnik->logInUser($uname, $upass, $conn);
-    $odg = User::logInUser($korisnik, $conn); //pristup statickim funkcijama preko klase
+    
+    $korisnik = new User(1,$uname, $upass);
+   
+    $odg = User::logInUser($korisnik, $conn); 
 
-    if($odg->num_rows==1){
+    if($odg->num_rows == 1){
        
-        $_SESSION['user_id'] = $korisnik->id;
+        $odgovor=$odg->fetch_array();
+        $_SESSION['user_id'] = $odgovor['id'];
         header('Location: ../home.php');
         exit();
     }else{

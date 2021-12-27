@@ -116,7 +116,7 @@ if ($podaci->num_rows == 0) {
                 </div>
                 <div class="modal-body">
                     <div class="container prijava-form">
-                        <form action="#" method="post" id="izmeniForm">
+                        <form action="#" method="post" id="dodajForm">
                             <h2 style="color: black; text-align: center; width: 400px;">Unesi ocenu</h2>
                             <div class="row">
                                 <div class="col-md-8">
@@ -164,7 +164,7 @@ if ($podaci->num_rows == 0) {
                                         <div class="form-group">
                                             <label for=""></label>
                                             <input type="hidden" id="izmenaId" />
-                                            <button id="btnDodaj" type="submit" class="btn btn-success btn-block" style="background-color: orange; border: 1px solid black; font-size: large;">Zakazi</button>
+                                            <button id="btnDodaj" type="submit" class="btn btn-success btn-block" style="background-color: orange; border: 1px solid black; font-size: large;">Unesi</button>
                                         </div>
                                     </div>
                                 </div>
