@@ -258,6 +258,7 @@ if ($podaci->num_rows == 0) {
 
     <script type="text/javascript">
 
+
         $("#btnIzmeni").click(function() {
             event.preventDefault();
             var Id = +$('#izmenaId').val();
