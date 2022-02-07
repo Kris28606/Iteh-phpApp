@@ -71,9 +71,6 @@ if ($podaci->num_rows == 0) {
                 </thead>
                 <tbody class="tbody">
                 <?php
-
-                //sam query vraca mnogo podataka iz baze,vraca my sql objekat
-                //fetch array je metoda sql objekta koja vraca red po red
                     while ($red = $podaci->fetch_array()) {
                         $predmet=Predmet::getById($red["predmetId"],$conn)->fetch_array();
                         $profesor=User::getById($red["profesorId"],$conn)->fetch_array();
@@ -105,7 +102,7 @@ if ($podaci->num_rows == 0) {
 
 
 
-    //----------------------MODAL DODAJ--------------------------
+    <!-- ----------------------MODAL DODAJ-------------------------- -->
     <div  id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- zakazi modal -->
@@ -177,7 +174,7 @@ if ($podaci->num_rows == 0) {
         </div>
     </div>
 
-    //----------------------MODAL IZMENI---------------------
+  <!--   ----------------------MODAL IZMENI--------------------- -->
     
     <div  id="izmeniModal" class="modal fade" role="dialog">
         <div class="modal-dialog">

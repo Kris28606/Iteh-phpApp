@@ -53,7 +53,7 @@ $('#dodajForm').submit(function(){
     });
 
     req.fail(function(jqXHR, textStatus, errorThrown){
-        console.error('Sledeca greska se desila> '+textStatus, errorThrown)
+        console.error('Sledeca greska se desila: '+textStatus, errorThrown)
     });
 });
 
